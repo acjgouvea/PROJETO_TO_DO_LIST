@@ -56,15 +56,9 @@ const cadastraTarefa = () => {
 
 <template>
   <div class="container">
-    <Cabecalho :tarefas-pendentes="getTarefaPendente().length" />
-    <Formulario />
-    <Lista />
-
+    <Cabecalho :tarefaPendente="getTarefaPendente()" />
+    <Formulario :trocar-filtro="evento => estadoTarefa.filtro = evento.target.value" :tarefas-temporaria="estadoTarefa.tarefasTemporaria" :edita-tarefa-temp="evento => estadoTarefa.tarefasTemporaria = evento.target.value" :cadastra-tarefa="cadastraTarefa" />
+    <Lista :tarefas="getTarefaFiltrada()"/>
   </div>
 </template>
 
-<style scoped>
-.done {
-  text-decoration: line-through;
-}
-</style>
